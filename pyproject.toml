@@ -1,0 +1,23 @@
+[project]
+name = "workbuddy-points-circuit-breaker"
+version = "0.1.0"
+description = "面向 WorkBuddy 的积分熔断工具：自动检测工作空间总量 / 单任务积分消耗，90% 软熔断、100% 硬熔断"
+requires-python = ">=3.10"
+dependencies = [
+    "uiautomation>=2.0.29",
+    "comtypes>=1.2.1",
+]
+
+[project.optional-dependencies]
+ocr = ["pytesseract", "pillow"]
+dev = ["pytest"]
+
+[project.scripts]
+circuit-breaker = "circuit_breaker.cli:main"
+
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["circuit_breaker", "circuit_breaker.reader", "circuit_breaker.actions"]

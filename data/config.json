@@ -1,0 +1,39 @@
+{
+  "default_budget": 0,
+  "thresholds": {
+    "warn": 0.9,
+    "trip": 1.0
+  },
+  "workspaces": {},
+  "reader": {
+    "mode": "uia",
+    "exe": "WorkBuddy.exe",
+    "title": "WorkBuddy",
+    "keyword": "共消耗",
+    "value_regex": "共消耗\\s*(\\d[\\d,]*)",
+    "scope": "whole",
+    "cumulative": false,
+    "field": "used",
+    "normalize_thousands": true,
+    "ocr_lang": "chi_sim"
+  },
+  "soft": {
+    "write_state_file": true,
+    "notify": true,
+    "inject_message": false,
+    "inject_text": "【熔断警告】积分已用至 90% 上限，请立即收尾并输出摘要。",
+    "notify_text": "积分熔断预警：已用至 90%，请尽快收尾。"
+  },
+  "hard": {
+    "close_task_window": true,
+    "close_locator": {
+      "name_contains": "关闭"
+    },
+    "notify_text": "积分熔断：已达 100% 上限，任务已停止。"
+  },
+  "poll_interval": 5,
+  "window": {
+    "exe": "WorkBuddy.exe",
+    "title": "WorkBuddy"
+  }
+}
